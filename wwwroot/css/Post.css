@@ -1,0 +1,118 @@
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    border-bottom: 1px solid rgba(177, 177, 177, 1);
+}
+.posts-header {
+    display: flex;
+    align-items: center;
+    height: 90px;
+    border-bottom: 1px solid rgba(177, 177, 177, 1);
+}
+.post-header-profile {
+    display: flex;
+    align-items: center;
+    height: 90px;
+}
+.posts {
+    width: 500px;
+    height: 600px;
+    border: 1px solid rgba(177, 177, 177, 1);
+    border-radius: 10px;
+}
+.post {
+    width: 500px;
+    border: 1px solid rgba(177, 177, 177, 1);
+    border-radius: 10px;
+}
+.img-profile {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 10px 10px;
+    background-color: brown;
+}
+.username {
+    color: rgba(81, 81, 81, 1);
+}
+
+.header-text {
+    margin-left: 10px;
+}
+.header-icon {
+    margin-right: 10px;
+}
+.header-icon > .dropdown > .btn-icon {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.content-img {
+    height: 85%;
+}
+.content-img > a > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
+}
+.content-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.btn-onlysubs {
+    background-color: red;
+}
+.username-link {
+    text-decoration: none;
+}
+.carousel-content-img {
+    height: 450px;
+    border-bottom: 1px solid rgba(177, 177, 177, 1);
+}
+.carousel-content-img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.response-icon {
+    width: 100%;
+    height: 60px;
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
+}
+.response-icon > .icon {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+.response-icon > .icon > li{
+    margin-left: 20px;
+}
+.like-btn {
+    background: none;
+    border: none;
+}
+
+
+.post-like-count {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+
+.post-description {
+    margin-left: 20px;
+    margin-right: 20px;
+}

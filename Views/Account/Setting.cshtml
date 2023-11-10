@@ -1,0 +1,42 @@
+@model UserUpdateRequest
+@{
+    ViewData["Title"] = "Setting";
+    var defaultSetting = ViewBag.DefaultSetting;
+}
+<div class="container" style="width: 500px;margin-top: 120px;">
+    <form asp-controller="Account" asp-action="Setting" method="post" enctype="multipart/form-data">
+        <div class="setting-image">
+            <img src="@Url.Content($"~/wwwroot/images/{@defaultSetting.ImageName}")" class="setting-image-preview" id="blah"
+                 alt="your image" />
+        </div>
+        <div asp-validation-summary="All" class="text text-danger"></div>
+        <div class="mt-5">
+            <label for="formFile" class="form-label">Change image</label>
+            <input asp-for="ImageProfile" class="form-control" accept="image/*" type='file' id="imgInp" />
+        </div>
+        <div class="mt-4">
+            <label class="form-label">Change Username</label>
+            <input asp-for="Username" value="@defaultSetting.Username" class="form-control" type="text" id="formFile"
+                maxlength="100" minlength="6">
+            <span asp-validation-for="Username"></span>
+        </div>
+        <div class="mt-4">
+            <label class="form-label">Birth date</label>
+            <input asp-for="BirthDate" class="form-control" type="date" id="formFile">
+            <span asp-validation-for="BirthDate"></span>
+        </div>
+        <div class="mt-4">
+            <label class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="5" maxlength="256"
+                minlength="6" placeholder="@defaultSetting.Description"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <p class="alert alert-danger mb-3 mt-3">@ViewBag.ErrorMessage</p>
+        }
+        <div class="mt-4  save">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+.headText{
+    color:rgba(112, 112, 112, 1);
+    font-size:48px;
+}
+.border4div{
+    border:1px solid;
+    border-radius: 10px;
+    border-color: rgba(177, 177, 177, 1);
+}
+.inputCode{
+    border:1px solid;
+    border-radius: 5px;
+    border-color: rgba(177, 177, 177, 1);
+    padding:8px;
+    transition:0.1s;
+}
+.inputCode:focus{
+    border:1px solid;
+    border-radius: 5px;
+    border-color: rgba(177, 177, 177, 1);
+    padding:8px;
+    outline-color:rgb(191, 214, 255);
+    outline-width: thick;
+    outline-style: solid;
+    transition:0.1s;
+}
+.normalText{
+    color:rgba(112, 112, 112, 1);
+    font-size: 18px;
+}
+.submitButton{
+    border:1px solid;
+    border-radius: 5px;
+    border-color: white;
+    background-color: rgba(68, 188, 255, 1);
+    color: white;
+    padding:8px;
+    /*  */
+    transition: 0.3s; 
+}
+button.submitButton:hover {
+    border:1px solid;
+    border-radius: 5px;
+    border-color: rgba(68, 188, 255, 1);
+    background-color: white;
+    color: rgba(68, 188, 255, 1);
+    padding:8px;
+}

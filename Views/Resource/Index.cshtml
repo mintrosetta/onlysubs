@@ -1,0 +1,29 @@
+@model RedeemRequest
+@{
+    ViewData["Title"] = "Top Up";
+}
+<div style="margin-top: 150px;">
+    <div class="row justify-content-center mt-5">
+        <form asp-controller="Resource" asp-action="Index" method="post" class="col-4 text-center border4div shadow">
+            <h1 class="headText mt-5">
+                TOP UP
+            </h1>
+
+            <input asp-for="code" type="text" class="col-9 mt-4 inputCode shadow mb-3" placeholder="Example : dydx1234" required>
+            <br>
+            <span asp-validation-for="code" class="text-danger"></span>
+            <br>
+            <label for="point" class="mt-4 normalText">Your current money</label>
+            <p class="normalText" id="point">
+                <strong>
+                    @ViewData["Money"]
+                </strong>
+            </p>
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <p class="alert alert-danger mb-3 mt-3">@ViewBag.ErrorMessage</p>
+            }
+            <button type="submit" class="col-9 submitButton mb-5 shadow">Redeem</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.setting-image {
+    text-align: center;
+}
+.setting-image-preview {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+ 
+}
+.save {
+    text-align: center;
+}
+.save > button {
+    width: 200px;
+}
+.changePassword {
+    text-align: center;
+}
+.changePassword > a {
+    width: 200px;
+}

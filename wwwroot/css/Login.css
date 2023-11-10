@@ -1,0 +1,41 @@
+﻿.makeButtonCenter {
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.logo {
+    font-family: logo;
+    font-size: 120px;
+}
+
+.underLogo {
+    font-family: underLogo;
+    font-size: 45px;
+}
+
+.signIn {
+    color: white;
+    font-size: 20px;
+}
+
+    .signIn:hover {
+        color: white;
+        font-size: 20px;
+    }
+
+.style1 {
+    display: block;
+    height: 1px;
+    border: 0px;
+    border-top: 2px solid rgba(173, 173, 173, 1);
+    margin: 1em 0;
+    padding: 0;
+}
+
+.signUp {
+    border-color: rgba(173, 173, 173, 1);
+    font-size: 20px;
+}
+label {
+    color: rgba(173, 173, 173, 1);
+}

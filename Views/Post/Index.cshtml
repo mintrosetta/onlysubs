@@ -1,0 +1,27 @@
+@model PostCreateRequest
+@{
+    ViewData["Title"] = "Create";
+}
+<h1 style="margin-top: 100px;">Create Post</h1>
+<form accept="/post/create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="tet-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" rows="10" cols="10" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Images" class="form-label">Upload Image</label>
+        <input asp-for="Images" class="form-control" type="file" id="formFile" multiple>
+        <span asp-validation-for="Images" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">Price</label>
+        <input type="number" asp-for="Price" class="form-control" value="0">
+    </div>
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <p class="alert alert-danger mb-3 mt-3">@ViewData["ErrorMessage"]</p>
+    }
+    <button class="btn btn-success" type="submit">Create</button>
+</form>

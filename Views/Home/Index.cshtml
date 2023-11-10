@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PostsResponse>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div class="d-flex flex-row-reverse" style="margin-top: 100px;">
+        <a href="/post/create" class="btn btn-primary">Create</a>
+    </div>
+    @if (Model == null)
+    {
+        <h2 class="no-posts text-center mt-3">Nothing to see here, would you like to meet new people ?</h2>
+    }
+    else
+    {
+        @foreach (var item in Model)
+        {
+            <div class="d-flex justify-content-center">
+                <div class="posts mt-5">
+                    <header class="posts-header">
+                        <div>
+                            <img class="img-profile" src="@Url.Content($"~/wwwroot/images/{@item.ProfileImage}")">
+                        </div>
+                        <div class="header-text">
+                            <a class="username-link" href="/account/@item.Username">
+                                <h4 class="username">@item.Username</h4>
+                            </a>
+                            <span>@item.Created.ToString("dddd, dd MMMM yyyy")</span>
+                        </div>
+                    </header>
+                    <div class="content-img">
+                        @if (string.IsNullOrEmpty(item.ImageName))
+                        {
+                            <div class="content-text">
+                                <div>
+                                    <h4>If you want to wisit this post</h4>
+                                    <p>@item.Price.ToString() $ for this post</p>
+                                    <a href="/post/@item.PostId" class="btn btn-primary mt-4">Buy now</a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <a href="/post/@item.PostId">
+                                <img src="@Url.Content($"~/wwwroot/images/{@item.ImageName}")">
+                            </a>   
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

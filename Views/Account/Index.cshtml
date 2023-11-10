@@ -1,0 +1,87 @@
+@model UserProfileResponse
+@{
+    ViewData["Title"] = User.Identity.Name;
+}
+
+<div class="container-md">
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <h1 class="no-posts text-center" style="margin-top: 120px;">Account not found :(</h1>
+    }
+    else
+    {
+        <div class="d-flex justify-content-center" style="margin-top: 100px;">
+            <div class="profile mt-5">
+                <div class="profile-header">
+                    <div class="profile-img">
+                        <img src="@Url.Content($"~/wwwroot/images/{@Model.ImageName}")">
+                    </div>
+                    <div class="profile-detail">
+                        <div class="profile-detail-header">
+                            <h2 class="profile-username">@Model.Username</h2>
+                            <form action="/account/follow/@Model.Username" method="post">
+                                @if (User.Identity.Name != Model.Username)
+                                {
+                                    @if (ViewBag.IsFollow)
+                                    {   
+                                        <button type="submit" class="btn btn-link">Unfollow</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-link">follow</button>
+                                    }
+                                }
+
+                            </form>
+                        </div>
+                        <ul class="profile-resource mt-3">
+                            <li>Krama @Model.Krama</li>
+                            <li>follower @Model.Follower</li>
+                            <li>following @Model.Following</li>
+                        </ul>
+                        <div class="profile-description mt-3">
+                            <p>@Model.Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row border-top mt-5 justify-content-center mb-3">
+                    <div class="col-1 text-center border-top normalFont border-3 border-secondary">
+                        Post
+                    </div>
+                </div>
+
+                <div class="profile-posts">
+                    @if (Model.PostsImage != null)
+                    {
+                        @foreach (var item in Model.PostsImage)
+                        {
+                            @if (item.ImageName != string.Empty)
+                            {
+                                <div class="profile-posts-item">
+                                    <a href="/post/@item.PostId">
+                                        <img src="@Url.Content($"~/wwwroot/images/{@item.ImageName}")">
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="profile-posts-item-buy">
+                                    <form action="/post/buy/@item.PostId">
+                                        <h3> @item.Price $</h3>
+                                        <p>for visit this post</p>
+                                        <button class="btn btn-primary mt-3">Buy now</button>
+                                    </form>
+                                </div>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <h1 style="margin-top: 100px;">ไม่เจอ</h1>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

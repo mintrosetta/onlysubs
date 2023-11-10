@@ -1,0 +1,77 @@
+@model UserRegisterRequest
+@{
+    ViewData["Title"] = "Sign Up";
+}
+<div class="container-md">
+        <div class="row vh-100">
+
+            <!-- Logo and your stupid text -->
+            <div class="col-7 text-center align-self-center">
+                <!-- เพิ่มบรรทัด 2 บรรทัด บรรทัดแรกเป็น logo และ content บรรทัดสองเป็น รูป partner 2 รูป -->
+                <div class="row">
+                    <h1 class="logo">
+                        OnlySub
+                    </h1>
+                    <div class="underLogo">
+                        Turn your story into money
+                    </div>
+                </div>
+                <!-- partner img -->
+                <div class="row justify-content-center mt-4">
+                    <div class="col-3 align-self-center">
+                        <img src="https://cdn.discordapp.com/attachments/807593897193635870/852539126640410624/logoadoppix.png" height="35">
+                    </div>
+                    <div class="col-3">
+                        <img src="https://cdn.discordapp.com/attachments/771737504390709258/903523381540950016/IMG_1690.JPG" height="65" class="imge" style="border-radius: 50px;">
+                    </div>
+                </div>
+            </div>
+            <!-- Sign in and Sign up -->
+            <div class="makeButtonCenter col-5 align-self-center">
+                <form asp-controller="Auth" asp-action="Register" method="post">
+                    <!-- username -->
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username" asp-for="Username">
+                        <label for="inputUsername">Username</label>
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                      </div>
+                    <!-- password -->
+                      <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" asp-for="Password">
+                        <label for="inputPassword">Password</label>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                      </div>
+                    <!-- confirm password -->
+                      <div class="form-floating mb-5">
+                        <input type="password" class="form-control" id="inputConfirmPassword" placeholder="ConfirmPassword" asp-for="ConfirmPassword">
+                        <label for="inputConfirmPassword">Confirm Password</label>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                      </div>
+                       @if(ViewData["ErrorMessage"] != null)
+                        {
+                            <p class="alert alert-danger mb-3">@ViewData["ErrorMessage"]</p>
+                        }
+                    <!-- submit button name "sign up" -->
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="submit" class="btn signUp text-info">Sign Up</button>
+                    </div>
+                    <!-- "Or" bar -->
+                    <div class="row mb-2">
+                        <div class="col-4">
+                            <hr class="style1">
+                        </div>
+                        <div class="col-4 text-center" style="font-size:20px; color: rgba(173, 173, 173, 1);;">
+                            OR
+                        </div>
+                        <div class="col-4">
+                            <hr class="style1">
+                        </div>
+                    </div>
+                    <!-- Sign In button -->
+                    <div class="d-grid gap-2">
+                        <a href="/auth/signin" class="btn btn-info signIn">Sign In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

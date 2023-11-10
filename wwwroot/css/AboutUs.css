@@ -1,0 +1,8 @@
+.icon-dark {
+  color: rgb(70, 70, 70);
+  transition: .3s;
+  cursor: pointer;
+}
+.icon-dark:hover {
+  color: rgb(112, 112, 112);
+}

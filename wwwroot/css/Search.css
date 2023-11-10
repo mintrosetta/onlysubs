@@ -1,0 +1,19 @@
+.account-contanier {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid rgb(197, 197, 197);
+}
+.account-contanier > .account-img > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.account-detail {
+    margin-left: 20px;
+    overflow: hidden;
+}
+.account-detail-followimg {
+    margin-left: 20px;
+}

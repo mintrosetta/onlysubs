@@ -1,0 +1,26 @@
+﻿@font-face {
+  font-family: logo;
+  src: url(../fonts/Rochester-Regular.ttf);
+}
+
+@font-face {
+  font-family: underLogo;
+  src: url(../fonts/Ruluko-Regular.ttf);
+}
+
+@font-face {
+  font-family: normalfont;
+  src: url(../font/Roboto-Light.ttf);
+}
+
+.navbar-brand {
+  font-size: 30px;
+  font-family: logo;
+}
+.no-posts {
+  text-align: center;
+  font-weight: 100;
+}
+.search-navbar {
+  display: flex;
+}

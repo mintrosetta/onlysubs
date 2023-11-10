@@ -1,0 +1,140 @@
+@model CommentRequest
+@{
+    int countImage = 0;
+    PostResponse postModel = ViewBag.PostResponse;
+}
+@if (postModel == null)
+{
+    <h1 class="no-posts text-center" style="margin-top: 120px;">Content not found :(</h1>
+}
+else
+{
+
+    <div class="d-flex justify-content-center" style="margin-top: 80px;">
+        <div class="post mt-5 mb-5">
+            <header class="post-header">
+                <div class="post-header-profile">
+                    <div>
+                        <img class="img-profile" src="@Url.Content($"~/wwwroot/images/{@postModel.UserImage}")">
+                    </div>
+                    <div class="header-text">
+                        <a class="username-link" href="/account/@postModel.Username">
+                            <h4 class="username">@postModel.Username</h4>
+                        </a>
+                        <span>@postModel.Created.ToString("dddd, dd MMMM yyyy")</span>
+                    </div>
+                </div>
+                @if (User.Identity.Name == postModel.Username)
+                {
+                    <div class="header-icon">
+                        <div class="dropdown">
+                            <button class="btn-icon" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                                <i class="fas fa-cog fa-2x"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <form action="/post/delete/@postModel.PostId" method="post">
+                                        <button class="text-danger dropdown-item" type="submit"
+                                    style="background: none; border: none; outline: none;">Delete</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+            </header>
+            <div>
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+                    <div class="carousel-inner">
+                        @foreach (var item in postModel.Images)
+                        {
+                            @if (countImage == 0)
+                            {
+                                <div class="carousel-item active carousel-content-img">
+                                    <img src="@Url.Content($"~/wwwroot/images/{@item}")" alt="...">
+                                </div>
+                                { countImage++; }
+                            }
+                            else
+                            {
+                                <div class="carousel-item carousel-content-img">
+                                    <img src="@Url.Content($"~/wwwroot/images/{@item}")" alt="...">
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="response-icon">
+                <ul class="icon">
+                    <li>
+                        <form action="/post/like/@postModel.PostId" method="post">
+                            <button type="submit" class="like-btn">
+                                @if (ViewBag.IsLike)
+                                {
+                                    <i class="fas fa-heart fa-2x"></i>
+                                }
+                                else
+                                {
+                                    <i class="far fa-heart fa-2x"></i>
+                                }
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <p class="post-like-count">@postModel.LikesCount Likes</p>
+            </div>
+            <div class="post-description">
+                <p>@postModel.Description</p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="container-comment">
+            <!-- write -->
+        <form action="/post/comment/@postModel.PostId" method="post" class="form-comment-write">
+                <img src="@Url.Content($"~/wwwroot/images/{@ViewData["currentUserImage"]}")" class="comment-write-img">
+                <div class="comment-write-text">
+                    <input asp-for="Description" type="text" class="comment-write-text-input" placeholder="comment">
+                    <button type="submit">
+                        <i class="fas fa-reply fa-2x"></i>
+                    </button>
+                </div>
+                <span asp-validation-for="Description"></span>
+            </form>
+
+            <!-- read -->
+        <div class="mb-5">
+                @foreach (var item in postModel.Comment)
+                {
+                    <div class="form-comment-read mt-5">
+                        <div class="comment-read-header">
+                            <img src="@Url.Content($"~/wwwroot/images/{@item.UserImage}")" class="comment-read-img">
+                            <h5>@item.Username</h5>
+                        </div>
+                        <p class="comment-read-des mt-2">
+                            @item.Description
+                        </p>
+                        <span>@item.Created.ToString("dddd, dd MMMM yyyy")</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
